@@ -49,7 +49,6 @@
         .toggle-switch-circle {
             transition: transform 0.2s ease-in-out;
         }
-        /* Minimal animations on scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -59,7 +58,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Language specific classes */
         .lang-tr, .lang-en { display: none; }
         .lang-tr.active, .lang-en.active { display: inline; }
     </style>
@@ -139,8 +137,40 @@
         </section>
 
         <section id="about" class="py-20 px-6 bg-slate-gray text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in">
+                <span class="lang-en active">Our Mission</span>
+                <span class="lang-tr">Misyonumuz</span>
+            </h2>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-white fade-in">
+                <span class="lang-en active">Ada Yolu Lojistik is committed to providing a reliable and transparent vehicle import service. Our goal is to eliminate the stress and confusion of the process, ensuring your vehicle arrives safely and legally in Northern Cyprus. We are dedicated to customer satisfaction and clear communication every step of the way.</span>
+                <span class="lang-tr">Ada Yolu Lojistik olarak güvenilir ve şeffaf bir araç ithalat hizmeti sunmayı taahhüt ediyoruz. Amacımız, sürecin karmaşıklığını ve stresini ortadan kaldırarak aracınızın Kuzey Kıbrıs'a güvenli ve yasal olarak ulaşmasını sağlamaktır. Her adımda müşteri memnuniyetine ve açık iletişime önem veriyoruz.</span>
+            </p>
         </section>
+
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langToggle = document.getElementById('lang-toggle');
+            let isEnglish = true;
+
+            function updateLanguage() {
+                document.querySelectorAll('.lang-en').forEach(el => {
+                    el.classList.toggle('active', isEnglish);
+                });
+                document.querySelectorAll('.lang-tr').forEach(el => {
+                    el.classList.toggle('active', !isEnglish);
+                });
+            }
+
+            // Initial state: show English
+            updateLanguage();
+
+            langToggle.addEventListener('click', () => {
+                isEnglish = !isEnglish;
+                updateLanguage();
+            });
+        });
+    </script>
 </body>
 </html>
-
